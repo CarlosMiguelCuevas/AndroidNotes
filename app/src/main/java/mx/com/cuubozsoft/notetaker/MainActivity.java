@@ -5,12 +5,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private boolean isInEditMode = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +41,32 @@ public class MainActivity extends AppCompatActivity {
         Button saveButton = (Button) findViewById(R.id.saveButton);
 
         saveButton.setOnClickListener((View v) -> {
-            ((Button)v).setText("clicked");
+            EditText titleEditText = (EditText)findViewById(R.id.editTextTitle);
+            EditText noteEditText = (EditText) findViewById(R.id.multilineTextNote);
+            TextView viewDate = (TextView) findViewById(R.id.textViewDate);
+            String buttonCaptionNestState = "";
+            String date = "";
+
+            if(isInEditMode)
+            {
+                buttonCaptionNestState = "Edit";
+                DateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+                date = dateformat.format(Calendar.getInstance().getTime());
+                viewDate.setText(date);
+            }
+            else
+            {
+                buttonCaptionNestState = "Save";
+            }
+
+            saveButton.setText(buttonCaptionNestState);
+            isInEditMode = !isInEditMode;
+            titleEditText.setEnabled(isInEditMode);
+            noteEditText.setEnabled(isInEditMode);
+
+
+
+
         });
 
     }
