@@ -18,14 +18,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 
-public class MainActivity extends AppCompatActivity {
-
-    private boolean isInEditMode = true;
+public class EditNoteActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit_note);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -36,37 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
-
-        Button saveButton = (Button) findViewById(R.id.saveButton);
-
-        saveButton.setOnClickListener((View v) -> {
-            EditText titleEditText = (EditText)findViewById(R.id.editTextTitle);
-            EditText noteEditText = (EditText) findViewById(R.id.multilineTextNote);
-            TextView viewDate = (TextView) findViewById(R.id.textViewDate);
-            String buttonCaptionNestState = "";
-            String date = "";
-
-            if(isInEditMode)
-            {
-                buttonCaptionNestState = "Edit";
-                DateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-                date = dateformat.format(Calendar.getInstance().getTime());
-                viewDate.setText(date);
-            }
-            else
-            {
-                buttonCaptionNestState = "Save";
-            }
-
-            saveButton.setText(buttonCaptionNestState);
-            isInEditMode = !isInEditMode;
-            titleEditText.setEnabled(isInEditMode);
-            noteEditText.setEnabled(isInEditMode);
-
-
-
-
         });
 
     }
