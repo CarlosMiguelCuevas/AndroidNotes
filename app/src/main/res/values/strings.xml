@@ -6,4 +6,9 @@
     <string name="save">Save</string>
     <string name="date">Date:</string>
     <string name="add_nemu">Add Menu</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="delete">Delete</string>
+    <string name="confirm_delete">Confirm delete</string>
+    <string name="alert_delete">Are you sure yo want to delet the note?</string>
+    <string name="edit">Edit</string>
 </resources>
